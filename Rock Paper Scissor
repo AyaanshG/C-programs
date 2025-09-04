@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <unistd.h>
+#include <string.h>
+
+int main()
+{
+	int i = 0, MAX = 100;
+	char player[MAX];
+
+	printf("Let's play ROCK-PAPER-SCISSOR!!!\n");
+	usleep(500000);
+	printf("\nChoose either rock/paper/scissor and play against the bot!\n\n");
+
+	// take one string input
+	scanf("%s", player);
+
+	srand(time(0));
+
+	int r = (rand() % 3) +1;   // 1 to 3
+
+	for(int x=0; x<=50; x++)
+	{
+		printf("\n");
+	}
+	printf("You chose:%s \n",player);
+	printf("The computer chose: ");
+
+	if(r==1)
+	{
+		printf("rock");
+	}
+	else if(r==2)
+	{
+		printf("scissor");
+	}
+	else if(r==3)
+	{
+		printf("paper");
+	}
+
+	printf("\n");
+
+	if (strcmp(player, "rock") == 0)
+		i = 1;
+	else if (strcmp(player, "scissor") == 0)
+		i = 2;
+	else if (strcmp(player, "paper") == 0)
+		i = 3;
+	else {
+		printf("INVALID INPUT - please check spelling and capitalization.\n");
+		return 0;
+	}
+
+
+// Decide result
+	if (r == i)
+		printf("It's a TIE!\n");
+	else if ((i == 1 && r == 2) ||   // rock beats scissor
+	         (i == 2 && r == 3) ||   // scissor beats paper
+	         (i == 3 && r == 1))     // paper beats rock
+		printf("PLAYER WINS!\n");
+	else
+		printf("COMPUTER WINS!\n");
+
+	return 0;
+}
+
