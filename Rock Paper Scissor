@@ -65,5 +65,6 @@ int main()
 		printf("COMPUTER WINS!\n");
 
 	return 0;
+
 }
 
